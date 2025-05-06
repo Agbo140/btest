@@ -1,10 +1,10 @@
 const WebSocket = require('ws');
 
 // ✅ Replace this with your real Deriv App ID
-const app_id = 'YOUR_APP_ID';
+const app_id = '70223';
 
-// ✅ WebSocket using fallback domain
-const ws = new WebSocket("wss://deriv-api.binaryws.com/websockets/v3?app_id=" + app_id);
+// ✅ Use fallback domain if ws.deriv.com doesn't work
+const ws = new WebSocket(`wss://deriv-api.binaryws.com/websockets/v3?app_id=${app_id}`);
 
 ws.on('open', () => {
   console.log('✅ Connected to Deriv API');
@@ -18,7 +18,7 @@ ws.on('open', () => {
 
 ws.on('message', (data) => {
   const response = JSON.parse(data);
-  console.log('�� Response:', response);
+  console.log('📥 Response:', response);
 });
 
 ws.on('error', (err) => {
